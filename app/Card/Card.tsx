@@ -1,12 +1,9 @@
 import { useState } from "react";
 
-
 type CardProps = {
-  id: number;
   name: string;
   image: string;
 };
-
 
 export function Card({ image, name }: CardProps) {
   const [hovered, setHovered] = useState(false);
@@ -38,16 +35,18 @@ export function Card({ image, name }: CardProps) {
           Start Game
         </button>
       </div>
-       <button className="cursor-pointer w-full py-2 text-gray-800 font-semibold">
+      <button className="cursor-pointer w-full py-2 text-gray-800 font-semibold">
         {
           // Extrai o nome do arquivo da URL e remove extensão e prefixos
-          image
+          name
             .split("/")
             .pop() // pega só o nome do arquivo
             ?.replace(/\.(png|jpg|jpeg)$/i, "") // remove extensão
             ?.replace(/^the-/, "") // remove "the-" do início
             ?.replace(/editorial-use-only.*$/i, "") // remove "editorial-use-only..." do final
             ?.replace(/_/g, "-") // troca _ por -
+            ?.replace(/\$/g, "") // remove todos os $
+            ?.replace(/\Copia/g, "") // remove todos os $
             ?.trim()
         }
       </button>
