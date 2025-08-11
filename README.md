@@ -7,3 +7,5 @@
 - mudar a logo
 - add container do adsense
 - separar camada de serviço
+- configurar controles da api emulador
+- documentar o fluxo do sistema
