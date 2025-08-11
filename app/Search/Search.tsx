@@ -40,18 +40,15 @@ export function Search() {
         className={`absolute left-1/2 -translate-x-1/2 overflow-hidden w-[500px] top-[60px] left-[-215px] bg-white  transition-all duration-300 ease-in-out ${
           open ? "max-h-32 opacity-100 mt-2" : "max-h-0 opacity-0"
         } flex justify-center`}
-       
       >
         <input
           ref={inputRef}
           type="text"
           placeholder="Buscar..."
           className=" w-[500px] 2 px-3 py-2 w-full  "
-          style={{ color: "#333333"}}
+          style={{ color: "#333333" }}
         />
-        <button className="bg-blue-500 text-white px-4 py-2 ">
-          Buscar
-        </button>
+        <button className="bg-blue-500 text-white px-4 py-2 ">Buscar</button>
       </div>
     </main>
   );
