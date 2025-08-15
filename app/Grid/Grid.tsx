@@ -16,7 +16,7 @@ export function Grid({ setRom, setOpen }: GridProps) {
     imageUrl: string;
   };
 
-  const { games } = useGameContext();
+  const { games, filterGames } = useGameContext();
 
   // Configurações do grid
   const columnCount = 4;
@@ -24,9 +24,11 @@ export function Grid({ setRom, setOpen }: GridProps) {
 
   // Renderiza cada célula do grid virtualizado
   const Cell = ({ columnIndex, rowIndex, style }: any) => {
+    const useFiltered = filterGames && filterGames.length > 0;
+    const data = useFiltered ? filterGames : games;
     const index = rowIndex * columnCount + columnIndex;
-    if (index >= games.length) return null;
-    const image = games[index];
+    if (index >= data.length) return null;
+    const image = data[index];
     return (
       <div
         style={style}
@@ -35,7 +37,7 @@ export function Grid({ setRom, setOpen }: GridProps) {
           setRom(`${image.name}.gen`);
           if (setOpen) setOpen(true);
         }}
-        className="cursor-pointer flex items-center justify-center"
+        className="cursor-pointer flex items-center justify-center transition-transform duration-300 ease-in-out hover:scale-105"
       >
         <Card image={image.imageUrl} name={image.name} />
       </div>
